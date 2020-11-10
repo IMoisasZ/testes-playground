@@ -1,6 +1,5 @@
 const express = require("express")
 const router = express.Router()
-const produtos = require("../produtos")
 const ProdutoController = require("../Controllers/ProdutoController")
 
 router.get("/", ProdutoController.paginaInicial)
