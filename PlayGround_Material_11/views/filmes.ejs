@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filmes</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Filmes</h1>
+    <ul>
+        <% filme.forEach(titulo => {%>
+         <li><%= titulo.id %></li>
+         <form action="filmes/deletar/<%= titulo.id %>?_method=DELETE" method="post">
+             <button type="submit">Deletar</button>
+         </form>
+         <form action="">
+            <button type="submit">Alterar</button>
+         </form>
+        <ul>
+            <li>Titulo: <%= titulo.titulo %></li>
+            <li>Duração: <%= titulo.duracao %></li>
+            <li>Genero: <%= titulo.genero %></li>
+        </ul>   
+        <%}) %>
+    </ul>
+  </body>
+</html>
