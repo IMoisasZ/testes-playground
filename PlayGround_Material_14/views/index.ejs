@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Peças por hora Injeção de Plásticos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container border border-light">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <form class="col-md-6">
+      <h1 class="h1">Peças por hora</h1>
+      <div class="mb-3">
+        <label for="codigo" class="form-label mt-">Código: </label>   
+        <select name="cod" id="codigo">
+          <option value="Selecione..." id="codigo">Selecione...</option>
+            <% peca.forEach(pc => { %>
+              <option value="<%= pc.codigo %>" id="codigo"><%= pc.codigo %></option>
+            <%})%>
+        </select></br>
+        <label for="descricao" class="form-label mt-3">Descriçao: </label>
+          <input type="text" name="descr" value="" class="form-control" id="descricao" aria-describedby="emailHelp" disabled>
+        <label for="cliente" class="form-label mt-3">Cliente: </label>
+        <select name="cli" id="cliente">
+          <option value="" id="">Selecione...</option>
+          <% cliente.forEach(cli => { %>
+            <option value="<%= cli.nome %>" id="cliente"><%= cli.nome %></option>
+          <%})%>
+        </select></br>
+
+        <label for="cavidade" class="form-label mt-3">Numero de Cavidades: </label>
+          <input type="text" value="" class="form-control" id="cavidade" aria-describedby="emailHelp">
+
+        <label for="ciclo" class="form-label mt-3">Ciclo: </label>
+          <input type="text" value="" class="form-control" id="ciclo" aria-describedby="emailHelp">
+        
+        <label for="pecasHora" class="form-label mt-3">Peças por Hora: </label>
+          <input type="text" value="" class="form-control" id="pecasHora" aria-describedby="emailHelp" disabled>
+        
+          <button type="submit" class="btn btn-primary mt-4">Cadastratar</button>
+      </div>
+    </form>
+    <div class="col-md-2"></div>
+  </div>
+  </body>
+</html>
