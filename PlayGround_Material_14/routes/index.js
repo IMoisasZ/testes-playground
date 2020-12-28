@@ -4,6 +4,7 @@ var router = express.Router();
 const ControllerPecasPorHora = require('../Controllers/ControllerPecas')
 
 /* GET home page. */
-router.get('/',ControllerPecasPorHora.cadastrarPecas)
+router.get('/',ControllerPecasPorHora.listaPecas)
+router.get('/pecas/:id?',ControllerPecasPorHora.cadastrarPecas)
 
 module.exports = router;
