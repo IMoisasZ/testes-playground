@@ -1,0 +1,50 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Inclusão de Responsáveis</h4>
+                    <form action="/responsavelDi" method="post">
+                        <label for="di">DI: </label>
+                        <input type="number" disabled name="id" class="form-control" value="<%= di %>">
+                        <label for="op">OP: </label>
+                        <input type="text" disabled name="maquina" class="form-control" required>
+                        <label for="responsavel">Responsavel: </label>
+                            <select name="responsavel" id="" class="form-select" required>
+                                <option value="Responsáveis...">Responsáveis...</option>
+                                <% diResp.forEach(diResp => {%>
+                                    <option value="<%= diResp.funcionario %>"><%= diResp.funcionario %></option>
+                                <%})%>
+                            </select>
+                        <label for="tipo">Tipo: </label>
+                        <input type="text" name="tipo" class="form-control" required>
+                        <label for="data">Data: </label>
+                        <input type="date" name="data" class="form-control" required>
+                        <label for="observacao">Observacao: </label>
+                        <textarea name="observacao" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <button type="submit" class="btn btn-success mt-1 d-inline">Incluir Responsavel</button>
+                    </form>
+                    <table class="table table-success table-striped mt-1">
+                        <tr>
+                            <td>Responsável</td>
+                            <td>tipo</td>
+                            <td>Data</td>
+                            <td>Observação</td>
+                        </tr>
+                        <% diResp.forEach(diResp=> {%>
+                        <tr>
+                            <td value="<%= diResp.responsavel %>"><%= diResp.responsavel %></td>
+                            <td value="<%= diResp.tipo %>"><%= diResp.tipo %></td>
+                            <td value="<%= diResp.data %>"><%= diResp.data %></td>
+                            <td value="<%= diResp.observacao %>"><%= diResp.observacao %></td>
+                        </tr>
+                        <%})%> 
+                    </table>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>         

@@ -1,0 +1,49 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Cadastro de DI</h4>
+                    <form action="/cadastroDi" method="post">
+                        <label for="di">DI: </label>
+                        <input type="number" name="di" class="form-control" required>
+                        <label for="op">OP: </label>
+                        <input type="text" name="op" class="form-control" required>
+                        <label for="descricao">Descriçao: </label>
+                        <input type="text" name="descricao" class="form-control" required>
+                        <label for="numeroFerramenta">Numero Ferramenta: </label>
+                        <input type="text" name="numeroFerramenta" class="form-control" required>
+                        <label for="nomePeca">Nome Peça: </label>
+                        <input type="text" name="nomePeca" class="form-control" required>
+                        <label for="numeroPeca">Numero Peça: </label>
+                        <input type="text" name="numeroPeca" class="form-control" required>
+                        <label for="cliente">Cliente: </label>
+                        <select name="cliente" id="" class="form-select" required>
+                            <option value="Clientes...">Clientes...</option>
+                            <% cliente.forEach(cliente=> {%>
+                                <option value="<%= cliente.cliente %>">
+                                    <%= cliente.cliente %>
+                                </option>
+                                <%})%>
+                        </select>
+                        <label for="dataInicio">DataInicio: </label>
+                        <input type="date" name="dataInicio" class="form-control" required>
+                        <label for="dataTermino">DataTermino: </label>
+                        <input type="date" name="dataTermino" class="form-control" required>
+                        <label for="status">Status: </label>
+                        <select name="status" id="" class="form-select" required>
+                            <option value="Em Execução" selected>Em Execução</option>
+                            <option value="Encerrada">Encerrada</option>
+                            <option value="Cancelada">Encerrada</option>
+                        </select>
+                        <button class="btn btn-success mt-1">Cadastrar</button>
+                    </form>
+                        <hr>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

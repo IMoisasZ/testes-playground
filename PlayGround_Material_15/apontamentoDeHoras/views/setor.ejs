@@ -1,0 +1,26 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+<body>  
+    <div class="col-md-9">
+        <h3 class="text-center">Lista de Setores</h3>
+            <% setor.forEach(setor => {%>
+                <div class="card card-body mt-1">
+                    <label for="id">Id: </label>
+                    <input type="number" disabled class="form-control mt-1" name="id" value="<%= setor.id %>">
+                    <label for="setor">Setor: </label>
+                    <input type="text" disabled class="form-control mt-1" name="setor" value="<%= setor.setor %>">
+                    <div class="">
+                        <form class="d-inline" action="" method="post">
+                            <button type="submit" class="btn btn-success mt-1">Editar</button>
+                        </form>
+                        <form class="d-inline" action="" method="post">
+                            <button type="submit" class="btn btn-danger mt-1">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            <%})%>
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

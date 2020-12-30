@@ -1,0 +1,21 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Cadastro de Cliente</h4>
+                    <form action="/cadastroCliente" method="post">
+                        <label for="id">Id: </label>
+                        <input type="number" disabled name="id" class="form-control">
+                        <label for="cliente">Cliente: </label>
+                        <input type="text" name="cliente" class="form-control" required>
+                        <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
+                    </form>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

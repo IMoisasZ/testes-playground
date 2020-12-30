@@ -5,6 +5,6 @@ const ControllerPecasPorHora = require('../Controllers/ControllerPecas')
 
 /* GET home page. */
 router.get('/',ControllerPecasPorHora.listaPecas)
-router.get('/pecas/:id?',ControllerPecasPorHora.cadastrarPecas)
+router.get('/pecas',ControllerPecasPorHora.cadastrarPecas)
 
 module.exports = router;

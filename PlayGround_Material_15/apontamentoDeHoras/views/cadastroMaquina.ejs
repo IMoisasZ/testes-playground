@@ -1,0 +1,37 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Cadastro de Máquinas</h4>
+                    <form action="/cadastroMaquina" method="post">
+                        <label for="id">Id: </label>
+                            <input type="number" disabled name="id" class="form-control">
+                        <label for="maquina">Maquina: </label>
+                            <input type="text" name="maquina" class="form-control" required>
+                        <label for="tipo">Tipo: </label>
+                        <select name="tipo" id="" class="form-select" required>
+                            <option value="Tipos...">Tipos...</option>
+                            <% tipo.forEach(tipo=> {%>
+                                <option value="<%= tipo.tipo %>">
+                                    <%= tipo.tipo %>
+                                </option>
+                                <%})%>
+                        </select>
+                        <label for="setor">Setor: </label>
+                        <select name="setor" id="" class="form-select" required>
+                            <option value="Setores...">Setores...</option>
+                            <% setor.forEach(setor=> {%>
+                                <option value="<%= setor.setor %>"><%= setor.setor %></option>
+                            <%})%>
+                        </select>
+                        <button class="btn btn-success mt-1">Cadastrar</button>
+                    </form>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>
