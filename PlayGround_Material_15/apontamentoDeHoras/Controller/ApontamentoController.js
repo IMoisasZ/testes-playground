@@ -8,9 +8,9 @@ const caminhoMaquinas = path.join("Data","maquinas.json")
 const caminhoClientes = path.join("Data","clientes.json")
 const caminhoDi = path.join("Data","di.json")
 const caminhoResponsavelDi = path.join("Data","diResponsaveis.json")
+const caminhoOperacao = path.join("Data","operacao.json")
+const caminhoDiHoras = path.join("Data","diHoras.json")
 
-let diResp = null
-let opResp = null
 
 const ApontamentoController = {
     home:(req,res) => {
@@ -127,20 +127,75 @@ const ApontamentoController = {
         res.redirect("di")
     },
 
-    responsavelDi:(req,res) => {
+    responsavelDi:(req,res) => {  
+        let {di, op} = req.params
+        
+        let responsavelDi = fs.readFileSync(caminhoResponsavelDi,{encoding:'utf-8'})
+        responsavelDi =  JSON.parse(responsavelDi)
+        let dadosDi = []
+        for(let i in responsavelDi){
+            if(responsavelDi[i].di === di){
+                dadosDi.push(responsavelDi[i])
+            }
+        }   
+
         let responsavelJson = fs.readFileSync(caminhoFucionarios,{encoding: 'utf-8'})
         responsavelJson = JSON.parse(responsavelJson)
 
-        res.render("cadastroResponsavelDi",{diResp: responsavelJson, di: diResp})
+        res.render("cadastroResponsavelDi",{diResp: responsavelJson, di: di, op: op, dadosDi: dadosDi})
     },
 
     responsavelDiPost:(req,res)=> {
-        let responsavelDiJson = fs.readFileSync(caminhoResponsavelDi,{encoding:'utf-8'})
-        let {responsavel, tipo, data, observacao} = req.body
+        let {di, op, responsavel, tipo, data, observacao} = req.body
+        let responsavelDiJson = fs.readFileSync(caminhoResponsavelDi)
         responsavelDiJson = JSON.parse(responsavelDiJson)
-        responsavelDiJson.push({di:diResp,op:opResp,responsavel,tipo,data,observacao})
+        responsavelDiJson.push({di, op, responsavel,tipo,data,observacao})
         fs.writeFileSync(caminhoResponsavelDi,JSON.stringify(responsavelDiJson),{encoding: 'utf-8'})
         res.redirect("cadastroDi")
+    },
+
+    diHoras: (req, res) => {
+        let {di,op} = req.params
+
+        let dadosDi = []
+        let somaHoras = 0
+        let diHorasJson = JSON.parse(fs.readFileSync(caminhoDiHoras,{encoding:'utf-8'}))
+        let operacaoJson = JSON.parse(fs.readFileSync(caminhoOperacao,{encoding:'utf-8'}))
+
+        for(let i in diHorasJson){
+            if(diHorasJson[i].di === di){
+                dadosDi.push(diHorasJson[i])
+                somaHoras += parseFloat(diHorasJson[i].horas)
+            }
+        }
+
+        res.render("cadastroDiHoras",{operacao: operacaoJson, di: di, op: op, dadosDi: dadosDi, somaHoras: parseFloat(somaHoras)})
+    },
+
+    diHorasPost: (req,res) => {
+        let {di,op,operacao,horas} = req.body
+        let diHorasJson = JSON.parse(fs.readFileSync(caminhoDiHoras,{encoding:'utf-8'}))
+        diHorasJson.push({di,op,operacao,horas})
+        fs.writeFileSync(caminhoDiHoras,JSON.stringify(diHorasJson),{encoding:'utf-8'})
+        res.redirect("di")
+    },
+
+    operacao: (req, res) => {
+        let operacaoJson = JSON.parse(fs.readFileSync(caminhoOperacao,{encoding: 'utf-8'}))
+        res.render("operacao",{operacao: operacaoJson})
+    },
+
+    cadastroOperacao: (req, res) => {
+        let setorJson = JSON.parse(fs.readFileSync(caminhoSetor,{encoding:'utf-8'}))
+        res.render("cadastroOperacao",{setor: setorJson})
+    },
+
+    cadastroOperacaoPost: (req, res) => {
+        let operacaoJson = JSON.parse(fs.readFileSync(caminhoOperacao,{encoding: 'utf-8'}))
+        let {operacao, setor} = req.body
+        operacaoJson.push({id: operacaoJson.length+1, operacao: operacao, setor: setor})
+        fs.writeFileSync(caminhoOperacao,JSON.stringify(operacaoJson),{encoding: 'utf-8'})
+        res.redirect("operacao")
     }
 
 }

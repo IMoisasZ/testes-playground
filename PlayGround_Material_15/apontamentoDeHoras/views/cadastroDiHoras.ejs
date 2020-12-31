@@ -1,0 +1,47 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Inclusão de Horas da DI</h4>
+                    <form action="/diHoras" method="post">
+                        <label for="di">DI: </label>
+                        <input type="number" name="di" class="form-control" value="<%= di %>">
+                        <label for="op">OP: </label>
+                        <input type="text" name="op" class="form-control" value="<%= op %>">
+                        <label for="operacao">Operação: </label>
+                        <select name="operacao" id="" class="form-select">
+                            <option value="Operações...">Operações...</option>
+                        <% operacao.forEach(operacao => {%>
+                            <option value="<%= operacao.operacao %>"><%= operacao.operacao %></option>
+                        <%})%>
+                        </select>
+                        <label for="horas">Qtde Horas: </label>
+                        <input type="number" name="horas" class="form-control">
+                        <button type="submit" class="btn btn-success mt-1 d-inline">Incluir Horas</button>
+                    </form>
+                    <table class="table table-success table-striped mt-1">
+                        <tr>
+                            <td>Operação</td>
+                            <td>Qtde Horas</td>
+                        </tr>
+                        <% dadosDi.forEach(dadosDi=> {%>
+                        <tr>
+                            <td value="<%= dadosDi.operacao %>"><%= dadosDi.operacao %></td>
+                            <td value="<%= dadosDi.horas %>"><%= dadosDi.horas %></td>
+                        </tr>
+                        <%})%> 
+                    </table>
+                    <table class="table table-danger table-striped">
+                    <tr>
+                        <td value="<%= somaHoras %>">Total horas Geral: <%= somaHoras %></td>
+                    </tr>
+                </table>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html> 
