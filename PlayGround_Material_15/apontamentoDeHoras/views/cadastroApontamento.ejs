@@ -1,0 +1,63 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Apontamento de horas</h4>
+                    <form action="/cadastroApontamento" method="post">
+                        <input type="hidden" name="id" class="form-control">
+                        <label for="data">Data: </label>
+                        <input type="date" name="data" class="form-control" required>
+                        <label for="funcionario">Funcionário: </label>
+                        
+                        <select name="funcionario" id="" class="form-select">
+                            <option value="Funcionário...">Funcionário...</option>
+                        <% funcionario.forEach(funcionario => {%>
+                            <option value="<%= funcionario.funcionario %>"><%= funcionario.funcionario %></option>
+                        <%})%>
+                        </select>
+
+                        <label for="maquina">Máquina: </label>
+                        <select name="maquina" id="maq" class="form-select">
+                            <option value="Máquinas...">Máquinas...</option>
+                        <% maquina.forEach(maquina => {%>
+                            <option value="<%= maquina.maquina %>"><%= maquina.maquina %></option>
+                        <%})%>
+                        </select>
+
+                        <label for="di">DI: </label>
+                        <select name="di" id="" class="form-select">
+                            <option value="DI's...">DI's...</option>
+                        <% di.forEach(di => {%>
+                            <option value="<%= di.di %>"><%= di.di %></option>
+                        <%})%>
+                        </select>
+
+                        <label for="posicao">Posição: </label>
+                        <input type="text" class="form-control" name="posicao" onclick="teste()">
+                        <label for="inicio">Inicio: </label>
+                        <input type="text" class="form-control" name="inicio" id="ini" onchange="totalHoras()">
+                        <label for="intervalo">Intervalo: </label>
+                        <input type="text" class="form-control" name="intervalo" id="int" onchange="totalHoras()">
+                        <label for="termino">Termino: </label>
+                        <input type="text" class="form-control" name="termino" id="ter" onchange="totalHoras()">
+                        <label for="total">Total: </label>
+                        <input type="number" class="form-control" name="total" id="tt" step=".02">
+
+                        <label for="descricaoTipo">Descricao Tipo: </label>
+                        <select name="descricaoTipo" id="" class="form-select">
+                            <option value="Descrição Tipos...">Descrição Tipos...</option>
+                        <% parada.forEach(parada => {%>
+                            <option value="<%= parada.descricao %>"><%= parada.descricao %></option>
+                        <%})%>
+                        </select>
+                        <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
+                    </form>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+<body>  
+    <div class="col-md-12 mt-2">
+        <h4 class="text-center">Apontamentos</h4>
+            <div class="card card-body">
+                <table class="table table-success table-striped mt-2">
+                    <tr>
+                        <td>Id</td>
+                        <td>Data</td>
+                        <td>Funcionario</td>
+                        <td>Maquina</td>
+                        <td>DI</td>
+                        <td>Posição</td>
+                        <td>Inicio</td>
+                        <td>Intervalo</td>
+                        <td>Termino</td>
+                        <td>Total</td>
+                        <td>Descrição Tipo</td>
+                        <td>Tipo</td>
+                    </tr>
+                    <% apontamento.forEach(apontamento => {%>
+                    <tr>
+                        <td value="<%= apontamento.id %>"><a href="/editar_excluirApontamento/<%= apontamento.id %>"><%= apontamento.id %></td></a>
+                        <td value="<%= apontamento.data %>"><%= apontamento.data %></td>
+                        <td value="<%= apontamento.funcionario %>"><%= apontamento.funcionario %></td>
+                        <td value="<%= apontamento.maquina %>"><%= apontamento.maquina %></td>
+                        <td value="<%= apontamento.di %>"><%= apontamento.di %></td>
+                        <td value="<%= apontamento.posicao %>"><%= apontamento.posicao %></td>
+                        <td value="<%= apontamento.inicio %>"><%= apontamento.inicio %></td>
+                        <td value="<%= apontamento.intervalo %>"><%= apontamento.intervalo %></td>
+                        <td value="<%= apontamento.termino %>"><%= apontamento.termino %></td>
+                        <td value="<%= apontamento.total %>"><%= apontamento.total %></td>
+                        <td value="<%= apontamento.descricaoTipo %>"><%= apontamento.descricaoTipo %></td>
+                        <td value="<%= apontamento.tipo %>"><%= apontamento.tipo %></td>
+                    <%})%>
+                    </tr>
+                </table>
+                <a href="/cadastroApontamento"><button type="submit" class="btn btn-success">Incluir apontamento</button></a>
+            </div>    
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Inclusão de Comentários</h4>
+                    <form action="/diComentario" method="post">
+                        <label for="di">DI: </label>
+                        <input type="number" name="di" class="form-control" value="<%= di %>">
+                        <label for="op">OP: </label>
+                        <input type="text" name="op" class="form-control" value="<%= op %>">
+                        <label for="data">Data: </label>
+                        <input type="date" name="data" class="form-control" required>
+                        <label for="responsavel">Responsável: </label>
+                        <select name="responsavel" id="" class="form-select">
+                        <% responsavel.forEach(responsavel => {%>
+                            <option value="<%= responsavel.funcionario %>" aria-placeholder="Escolha o responsável"><%= responsavel.funcionario %></option>
+                        <%})%>    
+                        </select>
+                        <label for="comentario">Comentário: </label>
+                        <textarea name="comentario" id="" cols="30" rows="10" placeholder="Digite aqui o comentário..." class="form-control"></textarea>
+                        <button type="submit" class="btn btn-success mt-1 d-inline">Incluir Comentário</button>
+                    </form>
+                    <table class="table table-success table-striped mt-1">
+                        <tr>
+                            <td>Data</td>
+                            <td>Responsavel</td>
+                            <td>Comentario</td>
+                        </tr>
+                        <% dadosDi.forEach(dadosDi=> {%>
+                        <tr>
+                            <td value="<%= dadosDi.data %>"><%= dadosDi.data %></td>
+                            <td value="<%= dadosDi.responsavel %>"><%= dadosDi.responsavel %></td>
+                            <td value="<%= dadosDi.comentario %>"><%= dadosDi.comentario %></td>
+                        </tr>
+                        <%})%> 
+                    </table>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>         

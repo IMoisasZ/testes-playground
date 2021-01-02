@@ -1,0 +1,106 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-12 ms-2 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Editar/Excluir Apontamento</h4>
+                    <% dados.forEach(dados => {%>  
+                    <form class="ms-2 me-2" action="/editar_excluirApontamento" method="post">
+                        <label for="id">ID: </label>
+                        <input type="number" name="id" class="form-control" accept="false" value="<%= id %>">
+                        <label for="data">Data: </label>
+                        <input type="date" name="data" class="form-control" value="<%= dados.data %>">
+                        
+                        <div class="row ms-0 me-0 mt-2">
+                            <div class="card col-md-6 d-inline">                       
+                                <label class="d-inline" for="funcionario" >Funcionário: </label>
+                                <select name="funcionario" id="" class="form-select">
+                                    <option value="0">Funcionário...</option>
+                                    <% funcionario.forEach(funcionario => {%>
+                                        <option value="<%= funcionario.funcionario %>"><%= funcionario.funcionario %></option>
+                                    <%})%>
+                                </select><br>
+                            </div>
+
+                            <div class="card col-md-6 d-inline">
+                                <label for="funcionarioAtual">Funcionário atual: </label>
+                                <input type="text" name="funcionarioAtualDisable" class="form-control me-2" value="<%= dados.funcionario%>" disabled>
+                                <input type="hidden" name="funcionarioAtual" class="form-control me-2" value="<%= dados.funcionario%>">
+                            </div>
+                        </div>
+
+                        <div class="row ms-0 me-0 mt-2">
+                            <div class="card col-md-6 d-inline"> 
+                                <label for="maquina">Máquina: </label>
+                                <select name="maquina" id="" class="form-select">
+                                    <option value="0">Máquinas...</option>
+                                <% maquina.forEach(maquina => {%>
+                                    <option value="<%= maquina.maquina %>"><%= maquina.maquina %></option>
+                                <%})%>
+                                </select><br>
+                            </div>
+                        
+                            <div class="card col-md-6 d-inline">
+                                <label for="maquinaAtual">Máquina atual: </label>
+                                <input type="text" name="maquinaAtualDisable" class="form-control" value="<%= dados.maquina%>" disabled>
+                                <input type="hidden" name="maquinaAtual" class="form-control" value="<%= dados.maquina%>">
+                            </div>   
+                        </div>
+                        
+                        <div class="row ms-0 me-0 mt-2">
+                            <div class="card col-md-6 d-inline"> 
+                                <label for="di">DI: </label>
+                                <select name="di" id="" class="form-select">
+                                    <option value="0">DI's...</option>
+                                <% di.forEach(di => {%>
+                                    <option value="<%= di.di %>"><%= di.di %></option>
+                                <%})%>
+                                </select><br>
+                            </div>
+                            <div class="card col-md-6 d-inline">
+                                <label for="diAtual">DI atual: </label>
+                                <input type="text" name="diAtualDisable" class="form-control" value="<%= dados.di%>" disabled>
+                                <input type="hidden" name="diAtual" class="form-control" value="<%= dados.di%>">
+                            </div>
+                        </div>    
+                        <label for="posicao">Posição: </label>
+                        <input type="text" class="form-control" name="posicao" value="<%= dados.posicao%>">
+                        <label for="inicio">Inicio: </label>
+                        <input type="text" class="form-control" name="inicio" value="<%= dados.inicio%>">
+                        <label for="intervalo">Intervalo: </label>
+                        <input type="text" class="form-control" name="intervalo" value="<%= dados.intervalo%>">
+                        <label for="termino">Termino: </label>
+                        <input type="text" class="form-control" name="termino" value="<%= dados.termino%>">
+                        <label for="total">Total: </label>
+                        <input type="number" class="form-control" name="total" value="<%= dados.total%>">
+
+                        <div class="row ms-0 me-0 mt-2">
+                            <div class="card col-md-6 d-inline"> 
+                                <label for="descricaoTipo">Descricao Tipo: </label>
+                                <select name="descricaoTipo" id="" class="form-select">
+                                    <option value="0">Descrição Tipos...</option>
+                                <% parada.forEach(parada => {%>
+                                    <option value="<%= parada.descricao %>"><%= parada.descricao %></option>
+                                <%})%>
+                                
+                                </select><br>
+                            </div>
+                            <div class="card col-md-6 d-inline">
+                                <label for="descricaoTipoAtual">Descrição Tipo atual: </label>
+                                <input type="text" class="form-control" name="descricaoTipoAtualDisable" value="<%= dados.descricaoTipo%>" disabled>
+                                <input type="hidden" class="form-control" name="descricaoTipoAtual" value="<%= dados.descricaoTipo%>">
+                            </div>
+                        </div>
+                        <div class="d-inline">
+                            <button type="submit" class="btn btn-warning mt-4">Editar</button>
+                        </div>    
+                    </form>
+                    <%})%>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

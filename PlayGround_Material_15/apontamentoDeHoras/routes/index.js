@@ -25,6 +25,10 @@ router.get('/operacao', ApontamentoController.operacao)
 router.get('/cadastroOperacao', ApontamentoController.cadastroOperacao)
 router.post('/cadastroOperacao', ApontamentoController.cadastroOperacaoPost)
 
+router.get('/parada', ApontamentoController.parada)
+router.get('/cadastroParada', ApontamentoController.cadastroParada)
+router.post('/cadastroParada', ApontamentoController.cadastroParadaPost)
+
 router.get('/di', ApontamentoController.di)
 router.get('/cadastroDi', ApontamentoController.cadastroDI)
 router.post('/cadastroDi', ApontamentoController.cadastroDIPost)
@@ -32,5 +36,14 @@ router.get('/responsavelDi/:di/:op', ApontamentoController.responsavelDi)
 router.post('/responsavelDi', ApontamentoController.responsavelDiPost)
 router.get('/diHoras/:di/:op', ApontamentoController.diHoras)
 router.post('/diHoras', ApontamentoController.diHorasPost)
+router.get('/diComentario/:di/:op', ApontamentoController.diComentario)
+router.post('/diComentario', ApontamentoController.diComentarioPost)
+
+router.get('/apontamento', ApontamentoController.apontamento)
+router.get('/cadastroApontamento', ApontamentoController.cadastroApontamento)
+router.post('/cadastroApontamento', ApontamentoController.cadastroApontamentoPost)
+router.get('/editar_excluirApontamento/:id', ApontamentoController.editar_excluirApontamento)
+router.post('/editar_excluirApontamento', ApontamentoController.editar_excluirApontamentoEditar)
+router.post('/editar_excluirApontamentoDeletar', ApontamentoController.editar_excluirApontamentoDeletar)
 
 module.exports = router;

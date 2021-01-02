@@ -2,16 +2,16 @@
 <%- include('./partials/header') %>
 <body>  
     <div class="col-md-12 mt-2">
-        <h4 class="text-center">Lista de Operação</h4>
-            <% operacao.forEach(operacao => {%>
+        <h4 class="text-center">Lista de Paradas</h4>
+            <% paradas.forEach(paradas => {%>
                 <div class="card card-body mt-1">
                     <label for="id">Id: </label>
-                    <input type="number" disabled class="form-control mt-1" name="id" value="<%= operacao.id %>">
-                    <label for="operacao">Operação: </label>
-                    <input type="text" disabled class="form-control mt-1" name="operacao" value="<%= operacao.operacao %>">
-                    <label for="setor">Setor: </label>
-                    <input type="text" disabled class="form-control mt-1" name="setor" value="<%= operacao.setor %>">
-                    <div class="d-inline">
+                    <input type="number" disabled class="form-control mt-1" name="id" value="<%= paradas.id %>">
+                    <label for="tipo">Tipo: </label>
+                    <input type="text" disabled class="form-control mt-1" name="tipo" value="<%= paradas.tipo %>">
+                    <label for="descricao">Descrição: </label>
+                    <input type="text" disabled class="form-control mt-1" name="descricao" value="<%= paradas.descricao %>">
+                    <div class="">
                         <form class="d-inline" action="" method="post">
                             <button type="submit" class="btn btn-success mt-1">Editar</button>
                         </form>
@@ -19,10 +19,9 @@
                             <button type="submit" class="btn btn-danger mt-1">Excluir</button>
                         </form>
                     </div>
-                
                 </div>
             <%})%>
-    </div>  
+    </div>
     <%- include('./partials/footer') %>
 </body>
 

@@ -1,21 +1,47 @@
 <body class="container">
-    <h1 class="text-center">APONTAMENTO DE HORAS</h1>
     <main class="row">
-        <header class="col-md-3">
-            <div class="btn-group-vertical">
-                <a href="/"><button class="btn btn-dark">Home</button></a>
-                <a href="/cadastroSetor"><button class="btn btn-dark mt-1">Cadastro de Setor</button></a>
-                <a href="/setor"><button class="btn btn-dark mt-1">Lista de Setores</button></a>
-                <a href="/cadastroFuncionario"><button class="btn btn-dark mt-1">Cadastro de Funcionário</button></a>
-                <a href="/funcionarios"><button class="btn btn-dark mt-1">Lista de Funcionários</button></a>
-                <a href="/cadastroMaquina"><button class="btn btn-dark mt-1">Cadastro de Máquina</button></a>
-                <a href="/maquina"><button class="btn btn-dark mt-1">Lista de Máquinas</button></a>
-                <a href="/cadastroCliente"><button class="btn btn-dark mt-1">Cadastro de Cliente</button></a>
-                <a href="/cliente"><button class="btn btn-dark mt-1">Lista de Clientes</button></a>
-                <a href="/cadastroOperacao"><button class="btn btn-dark mt-1">Cadastro de Operação</button></a>
-                <a href="/operacao"><button class="btn btn-dark mt-1">Lista de Operação</button></a>
-                <a href="/cadastroDi"><button class="btn btn-dark mt-1">Cadastro de DI</button></a>
-                <a href="/di"><button class="btn btn-dark mt-1">Lista de DI</button></a>
-                
+        <nav class="navbar navbar-expand-lg navbar-light text-light bg-dark mt-2">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Cadastros
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/cadastroApontamento">Cadastro Apontamento</a></li>
+                      <li><a class="dropdown-item" href="/cadastroCliente">Cadastro Cliente</a></li>
+                      <li><a class="dropdown-item" href="/cadastroDi">Cadastro DI</a></li>
+                      <li><a class="dropdown-item" href="/cadastroFuncionario">Cadastro Funcionário</a></li>
+                      <li><a class="dropdown-item" href="/cadastroMaquina">Cadastro Máquina</a></li>
+                      <li><a class="dropdown-item" href="/cadastroOperacao">Cadastro Operacao</a></li>
+                      <li><a class="dropdown-item" href="/cadastroParada">Cadastro Paradas</a></li>
+                      <li><a class="dropdown-item" href="/cadastroSetor">Cadastro Setor</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Listas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/apontamento">Apontamento</a></li>
+                      <li><a class="dropdown-item" href="/cliente">Clientes</a></li>
+                      <li><a class="dropdown-item" href="/di">DI</a></li>
+                      <li><a class="dropdown-item" href="/funcionarios">Funcionários</a></li>
+                      <li><a class="dropdown-item" href="/maquina">Máquinas</a></li>
+                      <li><a class="dropdown-item" href="/operacao">Operações</a></li>
+                      <li><a class="dropdown-item" href="/parada">Paradas</a></li>
+                      <li><a class="dropdown-item" href="/setor">Setores</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
             </div>
-        </header>
+          </nav>

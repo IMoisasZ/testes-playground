@@ -1,8 +1,8 @@
 <%- include('./partials/head') %>
 <%- include('./partials/header') %>
 <body>  
-    <div class="col-md-9">
-        <h3 class="text-center">Lista de DI's</h3>
+    <div class="col-md-12 mt-2">
+        <h4 class="text-center">Lista de DI's</h4>
             <% di.forEach(di => {%>
                 <div class="card card-body mt-1">
                     <label for="di">DI: </label>
@@ -20,7 +20,7 @@
                         </form>
                             <a href="/responsavelDi/<%= di.di %>/<%= di.op %>"><button type="submit" class="btn btn-warning mt-1">Incluir Responsável</button></a>
                             <a href="/diHoras/<%= di.di %>/<%= di.op %>"><button type="submit" class="btn btn-warning mt-1">Incluir Horas</button></a>
-                            <a href="/responsavelDi/<%= di.di %>/<%= di.op %>"><button type="submit" class="btn btn-warning mt-1">Incluir Comentários</button></a>
+                            <a href="/diComentario/<%= di.di %>/<%= di.op %>"><button type="submit" class="btn btn-warning mt-1">Incluir Comentário</button></a>
                     </div>
                 </div>
             <%})%>

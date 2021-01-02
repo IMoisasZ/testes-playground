@@ -1,0 +1,31 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Cadastro de Paradas</h4>
+                    <form action="/cadastroParada" method="post">
+                        <label for="id">ID: </label>
+                        <input type="number" name="id" class="form-control text-uppercase" required>
+                        <label for="tipo">Tipo: </label>
+                        <select name="tipo" id="" class="form-select text-uppercase" required>
+                            <option value="Tipos...">Tipos...</option>
+                            <% tipo.forEach(tipo=> {%>
+                                <option value="<%= tipo.tipo %>">
+                                    <%= tipo.tipo %>
+                                </option>
+                                <%})%>
+                        </select>
+                        <label for="descricao">Setor: </label>
+                        <input type="text" name="descricao" class="form-control text-uppercase" required>
+
+                        <button class="btn btn-success mt-1">Cadastrar</button>
+                    </form>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>
