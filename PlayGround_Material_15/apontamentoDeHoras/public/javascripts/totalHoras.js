@@ -1,4 +1,3 @@
-
 function totalHoras(){
     let inicio = document.getElementById("ini").value
     let intervalo = document.getElementById("int").value
@@ -7,7 +6,4 @@ function totalHoras(){
     if(inicio && termino != "" || inicio && termino != 0 && intervalor != ""){
         document.getElementById("tt").value = total
     }
-    
-
-    
 }

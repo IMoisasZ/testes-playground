@@ -14,6 +14,7 @@ const caminhoResponsavelDi = path.join("Data","diResponsaveis.json")
 const caminhoOperacao = path.join("Data","operacao.json")
 const caminhoDiHoras = path.join("Data","diHoras.json")
 const caminhoParadas = path.join("Data","parada.json")
+const caminhoParadasJs = path.join("public","javascripts","parada.js")
 const caminhoApontamento = path.join("Data","apontamento.json")
 const caminhoComentarioDi = path.join("Data","diComentario.json")
 
@@ -27,7 +28,7 @@ function write(caminho, incluir){
 }
 
 function append(caminho, incluir){
-    return fs.appendFileSync(caminho,JSON.stringify(incluir),{encoding:'utf-8'})
+    return fs.appendFileSync(caminho,incluir)
 }
 
 //controllers
@@ -197,10 +198,15 @@ const ApontamentoController = {
     },
 
     cadastroParadaPost: (req,res) => {
-        let {id, tipo, descricao} = req.body
+        let {tipo, descricao} = req.body
         let paradaJson = read(caminhoParadas)
-        paradaJson.push({id, tipo, descricao})
-        write(caminhoParadas,paradaJson)
+        paradaJson.push({id:paradaJson.length + 1, tipo, descricao})
+        let dadosDom = "\n\nfunction addTipo(){\n   var descricao = document.getElementById('descrTipo').selectedIndex\n    for(let i in paradas){\n        if(descricao == [i]){\n         document.getElementById('tp').value = paradas[i].tipo\n     }\n   }\n}"
+
+        write(caminhoParadas, paradaJson)
+        fs.writeFileSync(caminhoParadasJs, 'let paradas = ')
+        fs.appendFileSync(caminhoParadasJs, JSON.stringify(paradaJson)+'\n')
+        fs.appendFileSync(caminhoParadasJs, dadosDom)
         res.redirect("parada")
     },
 
@@ -218,7 +224,7 @@ const ApontamentoController = {
     },
 
     cadastroApontamentoPost:(req,res) => {
-        let {data, funcionario, maquina, di, posicao, inicio, intervalo, termino, total, descricaoTipo} = req.body
+        let {data, funcionario, maquina, di, posicao, inicio, intervalo, termino, total, descricaoTipo, tipo} = req.body
         let apontamentoJson = read(caminhoApontamento)
         let totalHoras = parseFloat(termino) - parseFloat(inicio) - parseFloat(intervalo)
         total = String(totalHoras)
@@ -226,7 +232,7 @@ const ApontamentoController = {
         for(let i in apontamentoJson){
             max = Math.max(apontamentoJson[i].id) + 1
         }
-        apontamentoJson.push({id: max, data, funcionario, maquina, di, posicao, inicio, intervalo, termino, total: totalHoras,descricaoTipo})
+        apontamentoJson.push({id: max, data, funcionario, maquina, di, posicao, inicio, intervalo, termino, total: totalHoras,descricaoTipo, tipo})
         write(caminhoApontamento,apontamentoJson)
         res.redirect("apontamento")
     },
@@ -351,4 +357,4 @@ const ApontamentoController = {
     }
 }
 
-module.exports = ApontamentoController
+module.exports = ApontamentoController,caminhoParadas

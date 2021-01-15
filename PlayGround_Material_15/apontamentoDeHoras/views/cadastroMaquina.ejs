@@ -7,10 +7,10 @@
                     <form action="/cadastroMaquina" method="post">
                         <label for="id">ID: </label>
                         <input type="number" name="id" class="form-control text-uppercase" disabled>
-                        <label for="maquina">Operação: </label>
+                        <label for="maquina">Máquina: </label>
                         <input type="text" name="maquina" class="form-control text-uppercase" required>
-                        <label for="tipo">Setor: </label>
-                        <select name="tipo" id="" class="form-select text-uppercase" required>
+                        <label for="tipo">Tipo: </label>
+                        <select name="tipo" id="tipo" class="form-select text-uppercase" required>
                             <option value="Tipos...">Tipos...</option>
                             <% tipo.forEach(tipo=> {%>
                                 <option value="<%= tipo.tipo %>">

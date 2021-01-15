@@ -1,6 +1,6 @@
 <%- include('./partials/head') %>
 <%- include('./partials/header') %>
-        <section class="col-md-12 mt-2">
+        <section class="col-md-12 mt-2" onload="criar()">
             <div class="card">
                 <div class="card-body">
                     <h4>Apontamento de horas</h4>
@@ -34,7 +34,7 @@
                         </select>
 
                         <label for="posicao">Posição: </label>
-                        <input type="text" class="form-control" name="posicao" onclick="teste()">
+                        <input type="text" class="form-control" name="posicao">
                         <label for="inicio">Inicio: </label>
                         <input type="text" class="form-control" name="inicio" id="ini" onchange="totalHoras()">
                         <label for="intervalo">Intervalo: </label>
@@ -45,12 +45,14 @@
                         <input type="number" class="form-control" name="total" id="tt" step=".02">
 
                         <label for="descricaoTipo">Descricao Tipo: </label>
-                        <select name="descricaoTipo" id="" class="form-select">
-                            <option value="Descrição Tipos...">Descrição Tipos...</option>
+                        <select name="descricaoTipo" id="descrTipo" class="form-select" onchange="addTipo()">
                         <% parada.forEach(parada => {%>
                             <option value="<%= parada.descricao %>"><%= parada.descricao %></option>
                         <%})%>
                         </select>
+                        <label for="tipo">Tipo: </label>
+                        <input type="text" name="tipo" id="tp" class="form-control">
+
                         <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
                     </form>
                 </div>
