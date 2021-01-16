@@ -1,0 +1,53 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Cadastro Usuário</h4>
+                    <form action="/addUsuario" method="post">
+                        <label for="id">Codigo: </label>
+                        <input type="number" disabled name="id" class="form-control" readonly>
+
+                        <label for="nome">Nome: </label>
+                        <input type="text" name="nome" class="form-control" required>
+
+                        <label for="sobrenome">Sobrenome: </label>
+                        <input type="text" name="sobrenome" class="form-control" required>
+
+                        <label for="dataNascimento">Data Nascimento: </label>
+                        <input type="date" name="dataNascimento" class="form-control" required>
+
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" class="form-control" required>
+
+                        <label for="estado">Estado: </label>
+                        <select name="estado" id="estado" class="form-select" onchange="addCidade()">
+                            <% estado.forEach(estado => {%>
+                                <option value="<%= estado.value %> "><%= estado %></option>
+                            <%})%> 
+                        </select>
+
+                        <label for="cidade">Cidade: </label>
+                        <select name="cidade" id="cidade" class="form-select">
+
+                        </select> 
+
+                        <label for="confirmeEmail">Confirmar Email: </label>
+                        <input type="email" name="confirmeEmail" class="form-control" required>
+
+                        <label for="senha">Senha: </label>
+                        <input type="password" name="senha" class="form-control" required>
+
+                        <label for="confirmeSenha">Confirme Senha: </label>
+                        <input type="password" name="confirmeSenha" class="form-control" required>
+
+                        <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
+                    </form>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

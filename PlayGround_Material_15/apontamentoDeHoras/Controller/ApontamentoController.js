@@ -357,4 +357,4 @@ const ApontamentoController = {
     }
 }
 
-module.exports = ApontamentoController,caminhoParadas
+module.exports = ApontamentoController
