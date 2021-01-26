@@ -12,7 +12,6 @@ const UserController = {
             siglasEstados.push(estadosJson[i].sigla)
             cidades.push(estadosJson[i].cidades[i])
         }
-        console.log(siglasEstados)
         res.render("cadastroUsuario",{estado: siglasEstados})
     },
 

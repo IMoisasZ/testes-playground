@@ -4,9 +4,20 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: white;
 }
 
 h4 {
-  background-color: aquamarine;
+  background-color: black;
+  padding: 10px;
+  color: white;
+}
+
+.container-fluid {
+  margin: 0%;
+  padding: 0%;
+}
+
+#tableApontamento {
+  font-size: 12px;
 }

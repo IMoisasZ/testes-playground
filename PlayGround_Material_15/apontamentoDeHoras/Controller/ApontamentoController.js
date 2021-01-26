@@ -34,16 +34,16 @@ function append(caminho, incluir){
 //controllers
 const ApontamentoController = {
     home:(req,res) => {
-        res.render("home")
+        res.render("home",{title: 'Home'})
     },
 
     setor: (req,res) =>{
         let setorJson = read(caminhoSetor)
-        res.render('setor', {setor: setorJson})
+        res.render('setor', {setor: setorJson, title: 'Setores'})
     },
 
     cadastroSetor:(req,res) => {
-        res.render("cadastroSetor")
+        res.render("cadastroSetor", {title: 'Cadastro Setor'})
     },
 
     cadastroSetorPost:(req,res) => {
@@ -56,12 +56,12 @@ const ApontamentoController = {
 
     funcionarios:(req,res) => {
         let funcionarioJson = read(caminhoFucionarios)
-        res.render("funcionarios", {funcionario: funcionarioJson})
+        res.render("funcionarios", {funcionario: funcionarioJson, title: 'Lista Funcionários'})
     },
 
     cadastroFuncionario: (req,res) => {
         let setorJson = read(caminhoSetor)
-        res.render("cadastroFuncionario", {setor: setorJson})
+        res.render("cadastroFuncionario", {setor: setorJson, title: 'Cadastro Funcionários'})
     },
 
     cadastroFuncionarioPost: (req,res) => {
@@ -74,11 +74,12 @@ const ApontamentoController = {
 
     maquina: (req,res) => {
         let maquinasJson = read(caminhoMaquinas)
-        res.render("maquina", {maquina: maquinasJson})
+        res.render("maquina", {maquina: maquinasJson, title: 'Lista Máquinas'})
     },
+
     cadastroMaquina: (req,res) => {
         let setorJson = read(caminhoSetor)
-        res.render("cadastroMaquina", {setor: setorJson, tipo: tipos})
+        res.render("cadastroMaquina", {setor: setorJson, tipo: tipos, title: 'Cadastro Máquina'})
     },
 
     cadastroMaquinaPost: (req,res) => {
@@ -91,11 +92,11 @@ const ApontamentoController = {
 
     cliente:(req,res) => {
         let clientesJson = read(caminhoClientes)
-        res.render("clientes", {cliente: clientesJson})
+        res.render("clientes", {cliente: clientesJson, title: 'Lista Clientes'})
     },
 
     cadastroCliente:(req,res) => {
-        res.render("cadastroCliente")
+        res.render("cadastroCliente", {title: 'Cadastro de Cliente'})
     },
 
     cadastroClientePost:(req,res) => {
@@ -110,12 +111,12 @@ const ApontamentoController = {
         let {di} = req.params
         diResp = di
         let diJson = read(caminhoDi)
-        res.render("di",{di: diJson})
+        res.render("di",{di: diJson, title: 'Lista DI'})
     },
 
     cadastroDI: (req,res) => {
         let clienteJson = read(caminhoClientes)     
-        res.render("cadastroDi",{cliente: clienteJson})
+        res.render("cadastroDi",{cliente: clienteJson, title: 'Cadastro DI'})
     },
 
     cadastroDIPost: (req,res) => {
@@ -136,7 +137,7 @@ const ApontamentoController = {
             }
         }   
         let responsavelJson = read(caminhoFucionarios)
-        res.render("cadastroResponsavelDi",{diResp: responsavelJson, di: di, op: op, dadosDi: dadosDi})
+        res.render("cadastroResponsavelDi",{diResp: responsavelJson, di: di, op: op, dadosDi: dadosDi, title: 'Cadastro Responsáveis DI'})
     },
 
     responsavelDiPost:(req,res)=> {
@@ -159,7 +160,7 @@ const ApontamentoController = {
                 somaHoras += parseFloat(diHorasJson[i].horas)
             }
         }
-        res.render("cadastroDiHoras",{operacao: operacaoJson, di: di, op: op, dadosDi: dadosDi, somaHoras: parseFloat(somaHoras)})
+        res.render("cadastroDiHoras",{operacao: operacaoJson, di: di, op: op, dadosDi: dadosDi, somaHoras: parseFloat(somaHoras), title: 'Cadastro Horas DI'})
     },
 
     diHorasPost: (req,res) => {
@@ -172,12 +173,12 @@ const ApontamentoController = {
 
     operacao: (req, res) => {
         let operacaoJson = read(caminhoOperacao)
-        res.render("operacao",{operacao: operacaoJson})
+        res.render("operacao",{operacao: operacaoJson, title: 'Lista Operações'})
     },
 
     cadastroOperacao: (req, res) => {
         let setorJson = read(caminhoSetor)
-        res.render("cadastroOperacao",{setor: setorJson})
+        res.render("cadastroOperacao",{setor: setorJson, title: 'Cadastro Operação'})
     },
 
     cadastroOperacaoPost: (req, res) => {
@@ -190,11 +191,11 @@ const ApontamentoController = {
 
     parada:(req,res) => {
         let paradaJson = read(caminhoParadas)
-        res.render("paradas",{paradas: paradaJson})
+        res.render("paradas",{paradas: paradaJson, title: 'Lista Paradas'})
     },
 
     cadastroParada: (req,res) => {
-        res.render("cadastroParadas",{tipo: tiposParadas})
+        res.render("cadastroParadas",{tipo: tiposParadas, title: 'Cadastro Parada'})
     },
 
     cadastroParadaPost: (req,res) => {
@@ -212,7 +213,11 @@ const ApontamentoController = {
 
     apontamento:(req,res) => {
         let apontamentoJson = read(caminhoApontamento)
-        res.render("apontamento", {apontamento: apontamentoJson})
+        // for(let i in apontamentoJson){
+        //     let total = parseFloat(apontamentoJson[i].total).toPrecision(3)
+        //     apontamentoJson[i].total = total
+        // }
+        res.render("apontamento", {apontamento: apontamentoJson, title: 'Lista Apontamentos'})
     },
 
     cadastroApontamento:(req,res) =>{
@@ -220,13 +225,13 @@ const ApontamentoController = {
         let maquinaJson = read(caminhoMaquinas)
         let diJson = read(caminhoDi)
         let paradaJson = read(caminhoParadas)
-        res.render("cadastroApontamento",{funcionario: funcionarioJson, maquina: maquinaJson, di: diJson, parada: paradaJson})
+        res.render("cadastroApontamento",{funcionario: funcionarioJson, maquina: maquinaJson, di: diJson, parada: paradaJson, title: 'Cadastro Apontamento'})
     },
 
     cadastroApontamentoPost:(req,res) => {
-        let {data, funcionario, maquina, di, posicao, inicio, intervalo, termino, total, descricaoTipo, tipo} = req.body
+        let {data, funcionario, maquina, di, posicao, inicio, intervalo, termino, descricaoTipo, tipo} = req.body
         let apontamentoJson = read(caminhoApontamento)
-        let totalHoras = parseFloat(termino) - parseFloat(inicio) - parseFloat(intervalo)
+        let totalHoras = (parseFloat(termino) - parseFloat(inicio) - parseFloat(intervalo)).toPrecision(3)
         total = String(totalHoras)
         let max = 0
         for(let i in apontamentoJson){
@@ -237,23 +242,20 @@ const ApontamentoController = {
         res.redirect("apontamento")
     },
 
-    editar_excluirApontamento:(req,res) => {
+    editarApontamento:(req,res) => {
         let {id} = req.params
         let apontamentoJson = read(caminhoApontamento)
         let funcionarioJson = read(caminhoFucionarios)
         let maquinaJson = read(caminhoMaquinas)
         let diJson = read(caminhoDi)
         let paradaJson = read(caminhoParadas)
-        let apontamentoSelecionado =[]
-        for(let i in apontamentoJson){
-            if(apontamentoJson[i].id == id){
-                apontamentoSelecionado.push(apontamentoJson[i])
-            }
-        }
-        res.render("editar_excluirApontamento",{dados: apontamentoSelecionado, funcionario: funcionarioJson, maquina: maquinaJson, di: diJson, parada: paradaJson, id: id})
+        
+        let apontamento = apontamentoJson.find(apontamento => apontamento.id == id)
+        console.log(apontamento)
+        res.render("editarApontamento",{dados: apontamento, funcionario: funcionarioJson, maquina: maquinaJson, di: diJson, parada: paradaJson, id: id, title: 'Editar Apontamento'})
     },
 
-    editar_excluirApontamentoEditar:(req,res) => {
+    editarApontamentoEditar:(req,res) => {
         let {id, data, funcionario, funcionarioAtual, maquina, maquinaAtual, di, diAtual, posicao, inicio, intervalo, termino, total, descricaoTipo, descricaoTipoAtual} = req.body
         let apontamentoJson = read(caminhoApontamento)
         let apontamentoSelecionado = {}
@@ -339,13 +341,13 @@ const ApontamentoController = {
         let responsavelJson = read(caminhoFucionarios)
         let comentarioDiJson = read(caminhoComentarioDi)
         let dadosDi = []
-
+        console.log(di)
         for(let i in comentarioDiJson){
             if(comentarioDiJson[i].di === di){
                 dadosDi.push(comentarioDiJson[i])
             }
         }
-        res.render("cadastroComentarioDi",{di: di, op: op, responsavel: responsavelJson, dadosDi: dadosDi})
+        res.render("cadastroComentarioDi",{di: di, op: op, responsavel: responsavelJson, dadosDi: dadosDi, title: 'Cadastrar Comentário DI'})
     },
 
     diComentarioPost:(req,res) => {

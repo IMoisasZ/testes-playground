@@ -4,7 +4,7 @@
     <div class="col-md-12 mt-2">
         <h4 class="text-center">Apontamentos</h4>
             <div class="card card-body">
-                <table class="table table-success table-striped mt-2">
+                <table class="table table-success table-striped mt-2" id="tableApontamento">
                     <tr>
                         <td>Id</td>
                         <td>Data</td>
@@ -18,6 +18,8 @@
                         <td>Total</td>
                         <td>Descrição Tipo</td>
                         <td>Tipo</td>
+                        <td>Editar</td>
+                        <td>Excluir</td>
                     </tr>
                     <% apontamento.forEach(apontamento => {%>
                     <tr>
@@ -33,7 +35,9 @@
                         <td value="<%= apontamento.total %>"><%= apontamento.total %></td>
                         <td value="<%= apontamento.descricaoTipo %>"><%= apontamento.descricaoTipo %></td>
                         <td value="<%= apontamento.tipo %>"><%= apontamento.tipo %></td>
-                    <%})%>
+                        <td><a href="#"><button type="submit" class="btn btn-warning" id="editar"></button></a></td>
+                        <td><a href="#"><button type="submit" class="btn btn-danger" id="excluir"></button></a></td>   
+                    <%})%>    
                     </tr>
                 </table>
                 <a href="/cadastroApontamento"><button type="submit" class="btn btn-success">Incluir apontamento</button></a>

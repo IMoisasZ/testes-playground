@@ -42,8 +42,8 @@ router.post('/diComentario', ApontamentoController.diComentarioPost)
 router.get('/apontamento', ApontamentoController.apontamento)
 router.get('/cadastroApontamento', ApontamentoController.cadastroApontamento)
 router.post('/cadastroApontamento', ApontamentoController.cadastroApontamentoPost)
-router.get('/editar_excluirApontamento/:id', ApontamentoController.editar_excluirApontamento)
-router.post('/editar_excluirApontamento', ApontamentoController.editar_excluirApontamentoEditar)
+router.get('/editar_excluirApontamento/:id', ApontamentoController.editarApontamento)
+router.post('/editar_excluirApontamento', ApontamentoController.editarApontamentoEditar)
 router.post('/editar_excluirApontamentoDeletar', ApontamentoController.editar_excluirApontamentoDeletar)
 
 module.exports = router;

@@ -1,0 +1,55 @@
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+        <section class="col-md-12 ms-2 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Editar Apontamento</h4>  
+                    <form class="ms-2 me-2" action="/editar_excluirApontamento" method="post">
+                        <label for="id">ID: </label>
+                        <input type="number" name="id" class="form-control" accept="false" value="<%= id %>" readonly>
+                        <label for="data">Data: </label>
+                        <input type="date" name="data" class="form-control" value="<%= dados.data %>">                      
+                        <label class="d-inline" for="funcionario" >Funcionário: </label>
+                        <select name="funcionario" id="" class="form-select">
+                            <% funcionario.forEach(funcionario => {%>
+                                <option value="<%= dados.funcionario %>"><%= dados.funcionario %></option>
+                            <%})%>
+                        </select>
+                        <label for="maquina">Máquina: </label>
+                        <select name="maquina" id="" class="form-select">
+                            <% maquina.forEach(maquina => {%>
+                                <option value="<%= dados.maquina %>" ><%= dados.maquina %></option>
+                            <%})%>
+                        </select>
+                        <label for="di">DI: </label>
+                        <select name="di" id="" class="form-select">
+                            <option value="<%= dados.di %>"><%= dados.di %></option>
+                        </select>
+                        <label for="posicao">Posição: </label>
+                        <input type="text" class="form-control" name="posicao" value="<%= dados.posicao%>">
+                        <label for="inicio">Inicio: </label>
+                        <input type="text" class="form-control" name="inicio" value="<%= dados.inicio%>">
+                        <label for="intervalo">Intervalo: </label>
+                        <input type="text" class="form-control" name="intervalo" value="<%= dados.intervalo%>">
+                        <label for="termino">Termino: </label>
+                        <input type="text" class="form-control" name="termino" value="<%= dados.termino%>">
+                        <label for="total">Total: </label>
+                        <input type="number" class="form-control" name="total" value="<%= dados.total%>">
+                        <label for="descricaoTipo">Descricao Tipo: </label>
+                        <select name="descricaoTipo" id="" class="form-select">
+                            <option value="<%= dados.descricaoTipo %>"><%= dados.descricaoTipo %></option>
+                        </select>
+                        <label for="tipo">Tipo: </label>
+                        <input type="text" class="form-control" name="tipo" value="<%= dados.tipo%>" readonly>
+                        <div class="d-inline">
+                            <button type="submit" class="btn btn-warning mt-4">Editar</button>
+                        </div>    
+                    </form>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>
